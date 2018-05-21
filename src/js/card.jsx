@@ -201,7 +201,7 @@ export default class toCard extends React.Component {
                 </div>
                 <div className="card-footer">
                     <img src={'./src/images/is_logo.jpeg'}/>
-                    <div className="call-to-action-button">Click here to explore data</div>
+                    <a href={data.explore_url}><div className="call-to-action-button">Click here to explore data</div></a>
                 </div>
             </div> 
         </div>

@@ -36,6 +36,9 @@
             "lastUpdated": {
                 "ui:widget": "alt-date"
             }
+        },
+        "explore_url": {
+            "ui:widget": "text"
         }
     },
     "mandatory_config": {

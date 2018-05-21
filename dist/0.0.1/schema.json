@@ -87,11 +87,17 @@
                     },
                     "required": ["source", "lastUpdated"]
 
+                },
+                "explore_url": {
+                    "id": "/properties/data/properties/explore_url",
+                    "type": "string",
+                    "title": "Explore URL"
                 }
             },
+
             "title": "Card Data",
             "type": "object",
-            "required": ["date", "title", "description", "details", "sources"]
+            "required": ["date", "title", "description", "details", "sources", "explore_url"]
         }
     },
     "type": "object"
