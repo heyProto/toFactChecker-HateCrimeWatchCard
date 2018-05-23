@@ -75,27 +75,6 @@ export default class editToCard extends React.Component {
     }  
   } 
 
-  // formatFormDate(date){
-  //   if(date.indexOf('-')==-1){
-  //     let day = date.substr(0,date.indexOf(' '));
-  //     let year = date.substr(-4);
-  //     let month = date.substr(date.indexOf(' ')+1,3);
-  //     console.log(year+" "+month+" "+day)
-  //     let frDate = '';
-  //     frDate += year+"-";
-  //     let months = "JanFebMarAprMayJunJulAugSeptOctNovDec";
-  //     let mon = months.indexOf(month)/3 + 1;
-  //     frDate += mon+"-";
-  //     frDate += day;
-  //     return frDate;
-
-  //   }
-  //   else{
-  //     return date;
-  //   }    
-
-  // }
-
   formatUpdateDate(date){
     if(date.indexOf(',')==-1){
       let year = date.substr(0,4);
@@ -113,59 +92,6 @@ export default class editToCard extends React.Component {
     } 
   }
 
-  // formatLUDate(sources){
-  //   let date = sources.lastUpdated;
-  //   let month = date.substr(0,date.indexOf(" "));
-  //   let day = date.substr(date.indexOf(" ")+1,date.indexOf(",")-date.indexOf(" ")-1);
-  //   let year = date.substr(date.indexOf(",")+2,4);
-  //   console.log(day + " " + month + " "+ year)
-  //   let frDate ="";
-  //   frDate += year+'-';
-  //   switch(month){
-  //     case "January":
-  //         frDate += "01-";
-  //         break;
-  //     case "February":
-  //         frDate += "02-";
-  //         break; 
-  //     case "March":
-  //         frDate += "03-";
-  //         break;
-  //     case "April":
-  //         frDate += "04-";
-  //         break;
-  //     case "May":
-  //         frDate += "05-";
-  //         break; 
-  //     case "June":
-  //         frDate += "06-";
-  //         break;
-  //     case "July":
-  //         frDate += "07-";
-  //         break;
-  //     case "August":
-  //         frDate += "08-";
-  //         break; 
-  //     case "September":
-  //         frDate += "09-";
-  //         break;
-  //     case "October":
-  //         frDate += "10-";
-  //         break;
-  //     case "November":
-  //         frDate += "11-";
-  //         break; 
-  //     case "December":
-  //         frDate += "12-";
-  //         break;           
-  //   }
-  //   frDate += day;
-  //   console.log(frDate);
-  //   sources.lastUpdated = frDate;
-  //   console.log(sources)
-  //   return sources;
-
-  // }
 
   onChangeHandler({formData}) {
     this.setState((prevState,prop)=>{
@@ -198,6 +124,18 @@ export default class editToCard extends React.Component {
 
     let blockquote_string = `<h1>${d.title}</h1>`;
     // Create blockqoute string.
+    blockquote_string += `<p>${d.date}</p>`;
+    blockquote_string += `<p>${d.description}</p>`;
+    blockquote_string += `<p>${d.detail.context}</p>`;
+    blockquote_string += `<p>${d.detail.action}</p>`;
+    blockquote_string += `<p>${d.detail.religion}</p>`;
+    blockquote_string += `<p>${d.detail.nature}</p>`;
+    blockquote_string += `<p>${d.detail.religionAlleged}</p>`;
+    blockquote_string += `<p>${d.detail.party}</p>`;
+    blockquote_string += `<p>${d.sources.source}</p>`;
+    blockquote_string += `<p>${d.sources.lastUpdated}</p>`;
+    blockquote_string += `<p>${d.explore_url}</p>`;
+
     let seo_blockquote = '<blockquote>' + blockquote_string + '</blockquote>'
     return seo_blockquote;
   }
@@ -209,7 +147,6 @@ export default class editToCard extends React.Component {
 
   renderFormData() {
     let data = this.state.dataJSON.data;
-    // data.date = this.formatFormDate(data.date);
     return data;
     
   }

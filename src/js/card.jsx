@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import '../css/newsCard.css';
-
 export default class toCard extends React.Component {
 
   constructor(props) {
@@ -99,7 +97,7 @@ export default class toCard extends React.Component {
     let tabClass;
 
     tabNames = tabs.map((card,i)=>{
-      tabClass = (this.state.activeCounter == i+1) ? "single-tab active" : "single-tab";
+      tabClass = (this.state.activeCounter == i+1) ? ((this.state.mode=="col-7")?"single-tab active":"single-tab single-tab-mobile active") : (this.state.mode=="col-7")?"single-tab":"single-tab single-tab-mobile";
       return(
         <div key={i.toString()} className={tabClass} style={{cursor:"pointer"}} onClick={()=>this.selectTab(i)}>{tabs[i]}</div>
       )
@@ -210,15 +208,37 @@ export default class toCard extends React.Component {
   }
 
   renderCol4() {
+
     if (this.state.fetchingData) {
       return (<div>Loading</div>)
     } else {
+      let data = this.state.dataJSON.data;
+      let title = data.title;
+      let date = data.date;
+      let description = data.description;
+      let details = data.details;
+      let sources = data.sources;
       return (
         <div
           id="protograph_div"
           className="protograph-col4-mode"
           style={{ fontFamily: this.state.languageTexts.font }}>
           {/* content */}
+          <div className="news-card news-card-mobile">
+                <button className="date" disabled="true">{date}</button>
+                <div className="card-title">{title}</div>
+                <div className="card-tabs card-tabs-mobile">
+                  {this.renderTabs()}  
+                </div>
+                <div>
+                  {this.renderTabContent(this.state.activeCounter)}
+                </div>
+                <div className="card-footer card-footer-mobile">
+                    <img src={'./src/images/is_logo.jpeg'}/>
+                    <a href={data.explore_url}><div className="call-to-action-button call-to-action-mobile">Click here to explore data</div></a>
+                </div>
+          </div>
+
         </div>
       )
     }
