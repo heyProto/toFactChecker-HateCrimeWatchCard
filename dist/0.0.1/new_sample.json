@@ -1,0 +1,27 @@
+{
+  "data": {
+    "when_and_where": {
+      "year": 2017,
+      "date": "8/15/2017",
+      "district": "Nizamabad",
+      "state": "Telangana",
+      "latitude": 18.6725047,
+      "longitude": 78.0940867
+    },
+    "description_of_incident": "\"Mohammad Yaqeen, the principal of a college in Telangana, was unfurling the national flag for Independence Day celebrations. During that time a voice in the crowd shouted \"Remove your shoes\". Soon, other voices joined and subsequent to the national anthem Mr. Yaqeen was assaulted by the crowd, consisting of the villages and \"student activists\". During the course of the same, Mr Yaqeen was focused to say, \"Jai Shri Ram\",\"Bharat Mata Ki Jai\". They also shouted,\"go to Pakistan\".\n\nReport does not contain any details as regards weapons, type of injury, reaction of witnessing crowd or presence of the police and/or state officials.",
+    "details": {
+      "pretext_to_incident": "Disrespecting Indian Flag",
+      "type_of_assault": "Non-fatal",
+      "religion_of_victim_1": "Muslim",
+      "religion_of_victim_2": "N/A",
+      "religion_of_victim_3": "N/A",
+      "religion_of_other_victim": "N/A",
+      "party_in_power": "Telangana Rashtra Samiti"
+    },
+    "sources": {
+      "source": "https://www.ndtv.com/telangana-news/on-independence-day-principal-in-telanaganas-nizamabad-faces-mob-attack-for-unfurling-national-flag-w-1738537?pfrom=home-topstories",
+      "last_updated": "April 16, 2018"
+    },
+    "explore_url": ""
+  }
+}

@@ -189,7 +189,7 @@ export default class toCard extends React.Component {
           style={{ fontFamily: this.state.languageTexts.font }}>
           {/* content */}
           <div className="news-card">
-                <button className="date" disabled="true">{date}</button>
+                <button className="card-date" disabled="true">{date}</button>
                 <div className="card-title">{title}</div>
                 <div className="card-tabs">
                   {this.renderTabs()}  
@@ -225,7 +225,7 @@ export default class toCard extends React.Component {
           style={{ fontFamily: this.state.languageTexts.font }}>
           {/* content */}
           <div className="news-card news-card-mobile">
-                <button className="date" disabled="true">{date}</button>
+                <button className="card-date" disabled="true">{date}</button>
                 <div className="card-title">{title}</div>
                 <div className="card-tabs card-tabs-mobile">
                   {this.renderTabs()}  
@@ -244,21 +244,6 @@ export default class toCard extends React.Component {
     }
   }
 
-  renderCol3() {
-    if (this.state.fetchingData) {
-      return (<div>Loading</div>)
-    } else {
-      return (
-        <div
-          id="protograph_div"
-          className="protograph-col3-mode"
-          style={{ fontFamily: this.state.languageTexts.font }}>
-            {/* content */}
-        </div>
-      )
-    }
-  }
-
   render() {
     switch(this.props.mode) {
       case 'col7' :
@@ -266,9 +251,6 @@ export default class toCard extends React.Component {
         break;
       case 'col4':
         return this.renderCol4();
-        break;
-      case 'col3' :
-        return this.renderCol3();
         break;
     }
   }
