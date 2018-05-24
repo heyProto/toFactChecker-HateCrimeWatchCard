@@ -59,20 +59,23 @@ export default class editToCard extends React.Component {
   }
 
   formatPublishDate(date){
-    if(date.indexOf(' ')==-1){
-      let year = date.substr(0,4);
-      let month = date.substr(5,2);
-      let day = date.substr(8,2);
-      let frDate = '';
-      let months = ["Jan" , "Feb" ,"Mar" , "Apr" , "May", "Jun" ,"Jul" ,"Aug","Sept","Oct","Nov","Dec"];
-      frDate += day+" ";
-      frDate += months[parseInt(month)-1]+", ";
-      frDate += year; 
-      return frDate; 
-    }
-    else{
-      return date;
-    }  
+    let new_date = date.split("-"),
+      frDate = new_date[1] + "/" +new_date[2] + "/" +new_date[0]
+    return frDate;
+    // if(date.indexOf(' ')==-1){
+    //   let year = date.substr(0,4);
+    //   let month = date.substr(5,2);
+    //   let day = date.substr(8,2);
+    //   let frDate = '';
+    //   let months = ["Jan" , "Feb" ,"Mar" , "Apr" , "May", "Jun" ,"Jul" ,"Aug","Sept","Oct","Nov","Dec"];
+    //   frDate += day+" ";
+    //   frDate += months[parseInt(month)-1]+", ";
+    //   frDate += year; 
+    //   return frDate; 
+    // }
+    // else{
+    //   return date;
+    // }  
   } 
 
   formatUpdateDate(date){
@@ -210,7 +213,7 @@ export default class editToCard extends React.Component {
                 <div>
                   <div className="section-title-text">Fill the form</div>
                   <div className="ui label proto-pull-right">
-                    To India Spend
+                    toIndiaSpendCard
                   </div>
                 </div>
                 <JSONSchemaForm schema={this.renderSchemaJSON()}
@@ -237,12 +240,6 @@ export default class editToCard extends React.Component {
                       onClick={this.toggleMode}
                     >
                       col-4
-                    </a>
-                    <a className={`item ${this.state.mode === 'col3' ? 'active' : ''}`}
-                      data-mode='col3'
-                      onClick={this.toggleMode}
-                    >
-                      col-3
                     </a>
                   </div>
                 </div>

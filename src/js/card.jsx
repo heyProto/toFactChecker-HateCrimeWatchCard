@@ -108,7 +108,7 @@ export default class toCard extends React.Component {
   renderTabContent(tab){
     switch(tab){
       case 1:
-        let description = this.state.dataJSON.data.description;
+        let description = this.state.dataJSON.data.description_of_incident;
         return(
           <p>
             {description}
@@ -122,29 +122,29 @@ export default class toCard extends React.Component {
             <div className="half-width-parameter">
               <div className="single-parameter">
                 <div className="parameter-label">context</div>
-                <p>{detail.context}</p>
+                <p>{detail.pretext_to_incident}</p>
               </div>
               <div className="single-parameter">
                 <div className="parameter-label">religion of the victim</div>
-                <p>{detail.religion}</p>
+                <p>{detail.religion_of_victim}</p>
               </div>
               <div className="single-parameter">
                 <div className="parameter-label">religion of the alleged perpetrator</div>
-                <p>{detail.religionAlleged}</p>
+                <p>{detail.religion_of_perpetrator}</p>
               </div>
             </div>
             <div className="half-width-parameter">
               <div className="single-parameter">
                 <div className="parameter-label">action taken</div>
-                <p>{detail.action}</p>
+                <p>{detail.is_fir_registered}</p>
               </div>
               <div className="single-parameter">
                 <div className="parameter-label">nature of assault</div>
-                <p>{detail.nature}</p>
+                <p>{detail.type_of_assault}</p>
               </div>
               <div className="single-parameter">
                 <div className="parameter-label">party in power in the state</div>
-                <p>{detail.party}</p>
+                <p>{detail.party_in_power}</p>
               </div>
             </div>
           </div>
@@ -155,13 +155,13 @@ export default class toCard extends React.Component {
         return(
           <div>
             <div className="single-parameter">
-              <div className="parameter-label">source (media, fact finding, self reported)</div>
-              <p><a href="">{sources.source}</a></p>
+              <div className="parameter-label">Source</div>
+              <p><a href={sources.source} target="_blank">{sources.source}</a></p>
             </div>
             <div className="single-parameter">
               <div className="parameter-label">Last Updated</div>
               <p>
-                  {sources.lastUpdated}
+                {sources.last_updated}
               </p>
             </div>
           </div>
@@ -171,16 +171,13 @@ export default class toCard extends React.Component {
   }
 
   renderCol7() {
-    
-    let data = this.state.dataJSON.data;
     if (this.state.fetchingData ){
       return(<div>Loading</div>)
     } else {
-      let title = data.title;
-      let date = data.date;
-      let description = data.description;
-      let details = data.details;
-      let sources = data.sources;
+      let data = this.state.dataJSON.data,
+        district = data.when_and_where.district,
+        state = data.when_and_where.state,
+        date = data.when_and_where.date;
 
       return (
         <div
@@ -189,18 +186,17 @@ export default class toCard extends React.Component {
           style={{ fontFamily: this.state.languageTexts.font }}>
           {/* content */}
           <div className="news-card">
-                <button className="card-date" disabled="true">{date}</button>
-                <div className="card-title">{title}</div>
-                <div className="card-tabs">
-                  {this.renderTabs()}  
-                </div>
-                <div>
-                  {this.renderTabContent(this.state.activeCounter)}
-                </div>
-                <div className="card-footer">
-                    <img src={'./src/images/is_logo.jpeg'}/>
-                    <a href={data.explore_url}><div className="call-to-action-button">Click here to explore data</div></a>
-                </div>
+            <button className="card-date" disabled="true">{date}</button>
+            <div className="card-title">{district}, {state}</div>
+            <div className="card-tabs">
+              {this.renderTabs()}  
+            </div>
+            <div>
+              {this.renderTabContent(this.state.activeCounter)}
+            </div>
+            <div className="card-footer">
+              <img className="logo-img" src={'./src/images/is_logo.jpeg'}/>
+            </div>
             </div> 
         </div>
       )
@@ -208,16 +204,13 @@ export default class toCard extends React.Component {
   }
 
   renderCol4() {
-
     if (this.state.fetchingData) {
       return (<div>Loading</div>)
     } else {
-      let data = this.state.dataJSON.data;
-      let title = data.title;
-      let date = data.date;
-      let description = data.description;
-      let details = data.details;
-      let sources = data.sources;
+     let data = this.state.dataJSON.data,
+        district = data.when_and_where.district,
+        state = data.when_and_where.state,
+        date = data.when_and_where.date;
       return (
         <div
           id="protograph_div"
@@ -225,20 +218,18 @@ export default class toCard extends React.Component {
           style={{ fontFamily: this.state.languageTexts.font }}>
           {/* content */}
           <div className="news-card news-card-mobile">
-                <button className="card-date" disabled="true">{date}</button>
-                <div className="card-title">{title}</div>
-                <div className="card-tabs card-tabs-mobile">
-                  {this.renderTabs()}  
-                </div>
-                <div>
-                  {this.renderTabContent(this.state.activeCounter)}
-                </div>
-                <div className="card-footer card-footer-mobile">
-                    <img src={'./src/images/is_logo.jpeg'}/>
-                    <a href={data.explore_url}><div className="call-to-action-button call-to-action-mobile">Click here to explore data</div></a>
-                </div>
+            <button className="card-date" disabled="true">{date}</button>
+            <div className="card-title">{district}, {state}</div>
+            <div className="card-tabs card-tabs-mobile">
+              {this.renderTabs()}  
+            </div>
+            <div>
+              {this.renderTabContent(this.state.activeCounter)}
+            </div>
+            <div className="card-footer card-footer-mobile">
+              <img className="logo-img" src={'./src/images/is_logo.jpeg'}/>
+            </div>
           </div>
-
         </div>
       )
     }
@@ -255,3 +246,5 @@ export default class toCard extends React.Component {
     }
   }
 }
+
+ // <a href={data.explore_url}><div className="call-to-action-button call-to-action-mobile">Click here to explore data</div></a>
