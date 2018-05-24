@@ -1,0 +1,47 @@
+{
+    "data": {
+        "date": {
+            "ui:widget": "alt-date"
+        },
+        "title": {
+            "ui:widget": "text"
+        },
+        "description": {
+            "ui:widget": "textarea"
+        },
+        "details": {
+            "context": {
+                "ui:widget": "text"
+            },
+            "action": {
+                "ui:widget": "text"
+            },
+            "religion": {
+                "ui:widget": "text"
+            },
+            "nature": {
+                "ui:widget": "text"
+            },
+            "religionAlleged": {
+                "ui:widget": "text"
+            },
+            "party": {
+                "ui:widget": "text"
+            }
+        },
+        "sources": {
+            "source": {
+                "ui:widget": "textarea"
+            },
+            "lastUpdated": {
+                "ui:widget": "alt-date"
+            }
+        },
+        "explore_url": {
+            "ui:widget": "text"
+        }
+    },
+    "mandatory_config": {
+        "ui:widget": "hidden"
+    }
+}

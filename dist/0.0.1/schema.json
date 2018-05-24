@@ -1,0 +1,104 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "definitions": {},
+    "id": "http://example.com/example.json",
+    "properties": {
+        "data": {
+            "id": "/properties/data",
+            "properties": {
+                "date": {
+                    "id": "/properties/data/properties/date",
+                    "type": "string",
+                    "title": "Publish Date",
+                    "format": "date"
+
+                },
+                "title": {
+                    "id": "/properties/data/properties/title",
+                    "type": "string",
+                    "title": "Title",
+                    "default": ""
+                },
+                "description": {
+                    "id": "/properties/data/properties/description",
+                    "type": "string",
+                    "title": "Description",
+                    "default": ""
+                },
+                "details": {
+                    "id": "/properties/data/properties/details",
+                    "type": "object",
+                    "title": "Details",
+                    "properties": {
+                        "context": {
+                            "id": "/properties/data/properties/details/properties/context",
+                            "title": "Context",
+                            "type": "string"
+                        },
+                        "action": {
+                            "id": "/properties/data/properties/details/properties/action",
+                            "title": "Action Taken",
+                            "type": "string"
+
+                        },
+                        "religion": {
+                            "id": "/properties/data/properties/details/properties/religion",
+                            "title": "Religion of the victim",
+                            "type": "string"
+
+                        },
+                        "nature": {
+                            "id": "/properties/data/properties/details/properties/nature",
+                            "title": "Nature of Assault",
+                            "type": "string"
+                        },
+                        "religionAlleged": {
+                            "id": "/properties/data/properties/details/properties/religionAlleged",
+                            "title": "Religion of the Alleged Prepetrator",
+                            "type": "string"
+
+                        },
+                        "party": {
+                            "id": "/properties/data/properties/details/properties/party",
+                            "title": "Party in power in the state",
+                            "type": "string"
+
+                        }
+
+                    },
+                    "required": ["context", "action", "religion", "nature", "religionAlleged", "party"]
+                },
+                "sources": {
+                    "id": "/properties/data/properties/sources",
+                    "title": "Sources",
+                    "type": "object",
+                    "properties": {
+                        "source": {
+                            "id": "/properties/data/properties/sources/properties/source",
+                            "title": "Source (Media, Fact finding, self reported )",
+                            "type": "string"
+
+                        },
+                        "lastUpdated": {
+                            "id": "/properties/data/properties/sources/properties/lastUpdated",
+                            "title": "Last Updated",
+                            "type": "string"
+                        }
+                    },
+                    "required": ["source", "lastUpdated"]
+
+                },
+                "explore_url": {
+                    "id": "/properties/data/properties/explore_url",
+                    "type": "string",
+                    "title": "Explore URL"
+                }
+            },
+
+            "title": "Card Data",
+            "type": "object",
+            "required": ["date", "title", "description", "details", "sources", "explore_url"]
+        }
+    },
+    "type": "object"
+}
