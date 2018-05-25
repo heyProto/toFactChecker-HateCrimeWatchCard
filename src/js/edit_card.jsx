@@ -29,7 +29,7 @@ export default class editToCard extends React.Component {
       optionalConfigJSON: this.state.optionalConfigJSON,
       optionalConfigSchemaJSON: this.state.optionalConfigSchemaJSON
     }
-    getDataObj["name"] = getDataObj.dataJSON.data.title.substr(0,225); // Reduces the name to ensure the slug does not get too long
+    getDataObj["name"] = getDataObj.dataJSON.data.when_and_where.district.substr(0,225); // Reduces the name to ensure the slug does not get too long
     return getDataObj;
   }
 
@@ -127,23 +127,7 @@ export default class editToCard extends React.Component {
 
 
   renderSEO() {
-    let d = this.state.dataJSON.data;
-
-    let blockquote_string = `<h1>${d.title}</h1>`;
-    // Create blockqoute string.
-    blockquote_string += `<p>${d.date}</p>`;
-    blockquote_string += `<p>${d.description}</p>`;
-    blockquote_string += `<p>${d.detail.context}</p>`;
-    blockquote_string += `<p>${d.detail.action}</p>`;
-    blockquote_string += `<p>${d.detail.religion}</p>`;
-    blockquote_string += `<p>${d.detail.nature}</p>`;
-    blockquote_string += `<p>${d.detail.religionAlleged}</p>`;
-    blockquote_string += `<p>${d.detail.party}</p>`;
-    blockquote_string += `<p>${d.sources.source}</p>`;
-    blockquote_string += `<p>${d.sources.lastUpdated}</p>`;
-    blockquote_string += `<p>${d.explore_url}</p>`;
-
-    let seo_blockquote = '<blockquote>' + blockquote_string + '</blockquote>'
+    let seo_blockquote = '<blockquote></blockquote>'
     return seo_blockquote;
   }
 
