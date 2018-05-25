@@ -220,7 +220,7 @@ export default class toCard extends React.Component {
               {this.renderTabContent(this.state.activeCounter)}
             </div>
             <div className="card-footer">
-              <img className="logo-img" src={'./src/images/is_logo.jpeg'}/>
+              <img className="logo-img" src={'https://cdn.protograph.pykih.com/79c10f895565f79dca4b/is_logo.jpeg'}/>
             </div>
             </div> 
         </div>
@@ -252,7 +252,7 @@ export default class toCard extends React.Component {
               {this.renderTabContent(this.state.activeCounter)}
             </div>
             <div className="card-footer card-footer-mobile">
-              <img className="logo-img" src={'./src/images/is_logo.jpeg'}/>
+              <img className="logo-img" src={'https://cdn.protograph.pykih.com/79c10f895565f79dca4b/is_logo.jpeg'}/>
             </div>
           </div>
         </div>
