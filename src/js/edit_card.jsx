@@ -29,6 +29,7 @@ export default class editToCard extends React.Component {
       optionalConfigJSON: this.state.optionalConfigJSON,
       optionalConfigSchemaJSON: this.state.optionalConfigSchemaJSON
     }
+    console.log(getDataObj.dataJSON)
     getDataObj["name"] = getDataObj.dataJSON.data.when_and_where.district.substr(0,225); // Reduces the name to ensure the slug does not get too long
     return getDataObj;
   }
@@ -127,7 +128,9 @@ export default class editToCard extends React.Component {
 
 
   renderSEO() {
-    let seo_blockquote = '<blockquote></blockquote>'
+    let d = this.state.dataJSON.data;
+    console.log(d, "dd")
+    let seo_blockquote = '<blockquote>' + d.when_and_where.district + d.when_and_where.state + d.description_of_incident+'</blockquote>'
     return seo_blockquote;
   }
 
