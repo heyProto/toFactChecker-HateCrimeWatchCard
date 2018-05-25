@@ -1,8 +1,8 @@
 {
   "data": {
     "when_and_where": {
-      "year": 2017,
-      "date": "8/15/2017",
+      "year": "2017",
+      "date": "2017-08-15",
       "district": "Nizamabad",
       "state": "Telangana",
       "latitude": 18.6725047,
@@ -13,13 +13,20 @@
       "pretext_to_incident": "Disrespecting Indian Flag",
       "type_of_assault": "Non-fatal",
       "is_fir_registered": "Yes" ,
-      "party_in_power": "Telangana Rashtra Samiti",
-      "religion_of_victim": "Muslim",
-      "religion_of_perpetrator": "Not Known"
+      "religion_of_victim_1": "Muslim",
+      "religion_of_victim_2": "N/A",
+      "religion_of_victim_3": "N/A",
+      "religion_of_other_victim": "N/A",
+      "religion_of_perpetrator_1": "Not Known",
+      "religion_of_perpetrator_2": "Not Known",
+      "religion_of_perpetrator_3": "Not Known",
+      "religion_of_other_perpetrator": "Not Known",
+      "party_in_power": "Telangana Rashtra Samiti"
     },
     "sources": {
-      "source": "https://www.ndtv.com/telangana-news/on-independence-day-principal-in-telanaganas-nizamabad-faces-mob-attack-for-unfurling-national-flag-w-1738537?pfrom=home-topstories",
-      "last_updated": "April 16, 2018"
+      "link_1": "https://www.ndtv.com/telangana-news/on-independence-day-principal-in-telanaganas-nizamabad-faces-mob-attack-for-unfurling-national-flag-w-1738537?pfrom=home-topstories",
+      "link_2": "",
+      "last_updated": "2018-04-16"
     },
     "explore_url": ""
   }

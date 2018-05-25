@@ -43,7 +43,7 @@ export default class editToCard extends React.Component {
         axios.get(this.props.optionalConfigSchemaURL),
         axios.get(this.props.uiSchemaURL)
       ])
-      .then(axios.spread((card, schema, opt_config, opt_config_schema, uiSchema, linkSources) => {
+      .then(axios.spread((card, schema, opt_config, opt_config_schema, uiSchema) => {
         let stateVars = {
           fetchingData: false,
           dataJSON: card.data,
@@ -59,26 +59,30 @@ export default class editToCard extends React.Component {
   }
 
   formatPublishDate(date){
-    let new_date = date.split("-"),
-      frDate = new_date[1] + "/" +new_date[2] + "/" +new_date[0]
-    return frDate;
-    // if(date.indexOf(' ')==-1){
-    //   let year = date.substr(0,4);
-    //   let month = date.substr(5,2);
-    //   let day = date.substr(8,2);
-    //   let frDate = '';
-    //   let months = ["Jan" , "Feb" ,"Mar" , "Apr" , "May", "Jun" ,"Jul" ,"Aug","Sept","Oct","Nov","Dec"];
-    //   frDate += day+" ";
-    //   frDate += months[parseInt(month)-1]+", ";
-    //   frDate += year; 
-    //   return frDate; 
-    // }
-    // else{
-    //   return date;
-    // }  
+    console.log(date, "date")
+    // let new_date = date.split("-"),
+    //   frDate = new_date[1] + "/" +new_date[2] + "/" +new_date[0]
+    // return frDate;
+    if(date.indexOf(' ')==-1){
+      let year = date.substr(0,4);
+      let month = date.substr(5,2);
+      let day = date.substr(8,2);
+      let frDate = '';
+      let months = ["Jan" , "Feb" ,"Mar" , "Apr" , "May", "Jun" ,"Jul" ,"Aug","Sept","Oct","Nov","Dec"];
+      frDate += day+" ";
+      frDate += months[parseInt(month)-1]+", ";
+      frDate += year; 
+      return frDate; 
+    }
+    else{
+      return date;
+    }  
   } 
 
   formatUpdateDate(date){
+    // let new_date = date.split("-"),
+    //   frDate = new_date[1] + "/" +new_date[2] + "/" +new_date[0]
+    // return frDate;
     if(date.indexOf(',')==-1){
       let year = date.substr(0,4);
       let month = date.substr(5,2);
@@ -99,8 +103,8 @@ export default class editToCard extends React.Component {
   onChangeHandler({formData}) {
     this.setState((prevState,prop)=>{
       let dataJSON = prevState.dataJSON;
-      formData.date = this.formatPublishDate(formData.date);
-      formData.sources.lastUpdated = this.formatUpdateDate(formData.sources.lastUpdated);
+      formData.date = this.formatPublishDate(formData.when_and_where.date);
+      formData.sources.lastUpdated = this.formatUpdateDate(formData.sources.last_updated);
       dataJSON.data = formData;
       return{
         dataJSON : dataJSON

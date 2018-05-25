@@ -105,6 +105,12 @@ export default class toCard extends React.Component {
     return tabNames;
   }
 
+  removeArrElem(array, element) {
+    const index = array.indexOf(element);
+    array.splice(index, 1);
+    console.log(array, "Array")
+  }
+
   renderTabContent(tab){
     switch(tab){
       case 1:
@@ -116,7 +122,25 @@ export default class toCard extends React.Component {
         )
         break;
       case 2:
-        let detail = this.state.dataJSON.data.details;
+        let detail = this.state.dataJSON.data.details,
+          victim_arr = [detail.religion_of_victim_1, detail.religion_of_victim_2, detail.religion_of_victim_3, detail.religion_of_other_victim],
+          perp_arr = [detail.religion_of_perpetrator_1, detail.religion_of_perpetrator_2, detail.religion_of_perpetrator_3, detail.religion_of_other_perpetrator],
+          victim_religion = [], perp_religion = [];
+        victim_arr.forEach((d, i) =>{
+          if (d !== 'N/A'){
+            if (victim_religion.indexOf(d) === -1){
+              victim_religion.push(d);
+            } 
+          } 
+        })
+        perp_arr.forEach((d, i) =>{
+          if (d !== 'N/A'){
+            if (perp_religion.indexOf(d) === -1){
+              perp_religion.push(d);
+            } 
+          } 
+        })
+        console.log(victim_religion, perp_religion)
         return(
           <div>
             <div className="half-width-parameter">
@@ -125,12 +149,12 @@ export default class toCard extends React.Component {
                 <p>{detail.pretext_to_incident}</p>
               </div>
               <div className="single-parameter">
-                <div className="parameter-label">religion of the victim</div>
-                <p>{detail.religion_of_victim}</p>
+                <div className="parameter-label">religion of the victim(s)</div>
+                <p>{victim_religion.toString()}</p>
               </div>
               <div className="single-parameter">
-                <div className="parameter-label">religion of the alleged perpetrator</div>
-                <p>{detail.religion_of_perpetrator}</p>
+                <div className="parameter-label">religion of the alleged perpetrator(s)</div>
+                <p>{perp_religion.toString()}</p>
               </div>
             </div>
             <div className="half-width-parameter">
@@ -156,7 +180,8 @@ export default class toCard extends React.Component {
           <div>
             <div className="single-parameter">
               <div className="parameter-label">Source</div>
-              <p><a href={sources.source} target="_blank">{sources.source}</a></p>
+              <p><a href={sources.link_1} target="_blank">{sources.link_1}</a></p>
+               <p><a href={sources.link_2} target="_blank">{sources.link_2}</a></p>
             </div>
             <div className="single-parameter">
               <div className="parameter-label">Last Updated</div>
