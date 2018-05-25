@@ -93,7 +93,7 @@ export default class toCard extends React.Component {
         )
         break;
       case 2:
-        let detail = this.state.dataJSON.data.details,
+        let detail = this.state.dataJSON.data,
           victim_arr = [detail.religion_of_victim_1, detail.religion_of_victim_2, detail.religion_of_victim_3, detail.religion_of_other_victim],
           perp_arr = [detail.religion_of_perpetrator_1, detail.religion_of_perpetrator_2, detail.religion_of_perpetrator_3, detail.religion_of_other_perpetrator],
           victim_religion = [], perp_religion = [];
@@ -146,7 +146,7 @@ export default class toCard extends React.Component {
         );
         break;
       case 3:
-        let sources = this.state.dataJSON.data.sources;
+        let sources = this.state.dataJSON.data;
         return(
           <div>
             <div className="single-parameter">
@@ -171,9 +171,9 @@ export default class toCard extends React.Component {
       return(<div>Loading</div>)
     } else {
       let data = this.state.dataJSON.data,
-        district = data.when_and_where.district,
-        state = data.when_and_where.state,
-        date = data.when_and_where.date;
+        district = data.district,
+        state = data.state,
+        date = data.date;
 
       return (
         <div
@@ -202,9 +202,9 @@ export default class toCard extends React.Component {
       return (<div>Loading</div>)
     } else {
      let data = this.state.dataJSON.data,
-        district = data.when_and_where.district,
-        state = data.when_and_where.state,
-        date = data.when_and_where.date;
+        district = data.district,
+        state = data.state,
+        date = data.date;
       return (
         <div
           id="protograph_div"

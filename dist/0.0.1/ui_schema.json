@@ -1,17 +1,16 @@
 {
   "data": {
-    "when_and_where":{
-      "date": {
-        "ui:widget": "alt-date"
-      }
+    "section":{
+      "ui:widget": "hidden"
+    },
+    "date": {
+      "ui:widget": "alt-date"
     },
     "description_of_incident": {
       "ui:widget": "textarea"
     },
-    "sources": {
-      "last_updated": {
-        "ui:widget": "alt-date"
-      }
+    "last_updated": {
+      "ui:widget": "alt-date"
     }
   }
 }

@@ -5,144 +5,127 @@
   "properties": {
     "data": {
       "id": "/properties/data",
+      "title": "Card Data",
+      "type": "object",
       "properties": {
-        "when_and_where":{
-          "id": "/properties/data/properties/when_and_where",
-          "type": "object",
-          "title": "When and where it occured?",
-          "properties": {
-            "year": {
-              "id": "/properties/data/properties/year",
-              "type": "string",
-              "title": "Year"
-            },
-            "date": {
-              "id": "/properties/data/properties/date",
-              "type": "string",
-              "title": "Publish Date",
-              "format": "date"
-            },
-            "district": {
-              "id": "/properties/data/properties/district",
-              "type": "string",
-              "title": "District"
-            },
-            "state": {
-              "id": "/properties/data/properties/district",
-              "type": "string",
-              "title": "State"
-            },
-            "latitude": {
-              "id": "/properties/data/properties/district",
-              "type": "number",
-              "title": "Latitude"
-            },
-            "longitude": {
-              "id": "/properties/data/properties/district",
-              "type": "number",
-              "title": "Longitude"
-            }
-          }
+        "section": {
+          "id": "/properties/data/properties/section",
+          "type": "string",
+          "title": "Section"
+        },
+        "year": {
+          "id": "/properties/data/properties/year",
+          "type": "string",
+          "title": "Year"
+        },
+        "date": {
+          "id": "/properties/data/properties/date",
+          "type": "string",
+          "title": "Publish Date",
+          "format": "date"
+        },
+        "district": {
+          "id": "/properties/data/properties/district",
+          "type": "string",
+          "title": "District"
+        },
+        "state": {
+          "id": "/properties/data/properties/district",
+          "type": "string",
+          "title": "State"
+        },
+        "latitude": {
+          "id": "/properties/data/properties/district",
+          "type": "number",
+          "title": "Latitude"
+        },
+        "longitude": {
+          "id": "/properties/data/properties/district",
+          "type": "number",
+          "title": "Longitude"
         },
         "description_of_incident": {
           "id": "/properties/data/properties/description",
           "type": "string",
           "title": "Description of the incident"
         },
-        "details": {
-          "id": "/properties/data/properties/details",
-          "type": "object",
-          "title": "Details",
-          "properties": {
-            "pretext_to_incident": {
-              "id": "/properties/data/properties/details/properties/pretext_to_incident",
-              "title": "Context",
-              "type": "string"
-            },
-            "type_of_assault": {
-              "id": "/properties/data/properties/details/properties/type_of_assault",
-              "title": "Nature of Assault",
-              "type": "string"
-            },
-            "is_fir_registered": {
-              "id": "/properties/data/properties/details/properties/is_fir_registered",
-              "title": "Is FIR registered?",
-              "type": "string"
-            },
-            "religion_of_victim_1": {
-              "id": "/properties/data/properties/details/properties/religion_of_victim_1",
-              "title": "Religion of the victim 1",
-              "type": "string"
-            },
-            "religion_of_victim_2": {
-              "id": "/properties/data/properties/details/properties/religion_of_victim_2",
-              "title": "Religion of the victim 2",
-              "type": "string"
-            },
-             "religion_of_victim_3": {
-              "id": "/properties/data/properties/details/properties/religion_of_victim_3",
-              "title": "Religion of the victim 3",
-              "type": "string"
-            },
-             "religion_of_other_victim": {
-              "id": "/properties/data/properties/details/properties/religion_of_other_victim",
-              "title": "Religion of the other victims",
-              "type": "string"
-            },
-            "religion_of_perpetrator_1": {
-              "id": "/properties/data/properties/details/properties/religion_of_perpetrator_1",
-              "title": "Religion of the alleged prepetrator 1",
-              "type": "string"
-            },
-            "religion_of_perpetrator_2": {
-              "id": "/properties/data/properties/details/properties/religion_of_perpetrator_2",
-              "title": "Religion of the alleged prepetrator 2",
-              "type": "string"
-            },
-            "religion_of_perpetrator_3": {
-              "id": "/properties/data/properties/details/properties/religion_of_perpetrator_3",
-              "title": "Religion of the alleged prepetrator 3",
-              "type": "string"
-            },
-            "religion_of_other_perpetrator": {
-              "id": "/properties/data/properties/details/properties/religion_of_other_perpetrator",
-              "title": "Religion of other alleged prepetrators",
-              "type": "string"
-            },
-            "party_in_power": {
-              "id": "/properties/data/properties/details/properties/party_in_power",
-              "title": "Party in power in the state",
-              "type": "string"
-            }
-          },
-          "required": ["pretext_to_incident", "is_fir_registered", "type_of_assault", "party_in_power"]
+        "pretext_to_incident": {
+          "id": "/properties/data/properties/details/properties/pretext_to_incident",
+          "title": "Context",
+          "type": "string"
         },
-        "sources": {
-          "id": "/properties/data/properties/sources",
-          "title": "Sources",
-          "type": "object",
-          "properties": {
-            "link_1": {
-              "id": "/properties/data/properties/sources/properties/link_1",
-              "title": "Link 1",
-              "type": "string"
-            },
-            "link_2": {
-              "id": "/properties/data/properties/sources/properties/link_2",
-              "title": "Link 2",
-              "type": "string"
-            },
-            "last_updated": {
-              "id": "/properties/data/properties/sources/properties/last_updated",
-              "title": "Last Updated",
-              "type": "string"
-            }
-          }
+        "type_of_assault": {
+          "id": "/properties/data/properties/details/properties/type_of_assault",
+          "title": "Nature of Assault",
+          "type": "string"
+        },
+        "is_fir_registered": {
+          "id": "/properties/data/properties/details/properties/is_fir_registered",
+          "title": "Is FIR registered?",
+          "type": "string"
+        },
+        "religion_of_victim_1": {
+          "id": "/properties/data/properties/details/properties/religion_of_victim_1",
+          "title": "Religion of the victim 1",
+          "type": "string"
+        },
+        "religion_of_victim_2": {
+          "id": "/properties/data/properties/details/properties/religion_of_victim_2",
+          "title": "Religion of the victim 2",
+          "type": "string"
+        },
+         "religion_of_victim_3": {
+          "id": "/properties/data/properties/details/properties/religion_of_victim_3",
+          "title": "Religion of the victim 3",
+          "type": "string"
+        },
+        "religion_of_other_victim": {
+          "id": "/properties/data/properties/details/properties/religion_of_other_victim",
+          "title": "Religion of the other victims",
+          "type": "string"
+        },
+        "religion_of_perpetrator_1": {
+          "id": "/properties/data/properties/details/properties/religion_of_perpetrator_1",
+          "title": "Religion of the alleged prepetrator 1",
+          "type": "string"
+        },
+        "religion_of_perpetrator_2": {
+          "id": "/properties/data/properties/details/properties/religion_of_perpetrator_2",
+          "title": "Religion of the alleged prepetrator 2",
+          "type": "string"
+        },
+        "religion_of_perpetrator_3": {
+          "id": "/properties/data/properties/details/properties/religion_of_perpetrator_3",
+          "title": "Religion of the alleged prepetrator 3",
+          "type": "string"
+        },
+        "religion_of_other_perpetrator": {
+          "id": "/properties/data/properties/details/properties/religion_of_other_perpetrator",
+          "title": "Religion of other alleged prepetrators",
+          "type": "string"
+        },
+        "party_in_power": {
+          "id": "/properties/data/properties/details/properties/party_in_power",
+          "title": "Party in power in the state",
+          "type": "string"
+        },
+        "link_1": {
+          "id": "/properties/data/properties/sources/properties/link_1",
+          "title": "Link 1",
+          "type": "string"
+        },
+        "link_2": {
+          "id": "/properties/data/properties/sources/properties/link_2",
+          "title": "Link 2",
+          "type": "string"
+        },
+        "last_updated": {
+          "id": "/properties/data/properties/sources/properties/last_updated",
+          "title": "Last Updated",
+          "type": "string"
         }
       },
-      "title": "Card Data",
-      "type": "object",
-      "required": ["when_and_where","description_of_incident", "details", "sources"]
+    "required": ["pretext_to_incident", "is_fir_registered", "type_of_assault", "party_in_power","description_of_incident"]
     }
   },
   "type": "object"

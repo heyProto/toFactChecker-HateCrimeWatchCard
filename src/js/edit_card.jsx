@@ -30,7 +30,7 @@ export default class editToCard extends React.Component {
       optionalConfigSchemaJSON: this.state.optionalConfigSchemaJSON
     }
     console.log(getDataObj.dataJSON)
-    getDataObj["name"] = getDataObj.dataJSON.data.when_and_where.district.substr(0,225); // Reduces the name to ensure the slug does not get too long
+    getDataObj["name"] = getDataObj.dataJSON.data.district.substr(0,225); // Reduces the name to ensure the slug does not get too long
     return getDataObj;
   }
 
@@ -60,52 +60,54 @@ export default class editToCard extends React.Component {
   }
 
   formatPublishDate(date){
-    console.log(date, "date")
+    // console.log(date, "date")
     // let new_date = date.split("-"),
     //   frDate = new_date[1] + "/" +new_date[2] + "/" +new_date[0]
     // return frDate;
-    if(date.indexOf(' ')==-1){
-      let year = date.substr(0,4);
-      let month = date.substr(5,2);
-      let day = date.substr(8,2);
-      let frDate = '';
-      let months = ["Jan" , "Feb" ,"Mar" , "Apr" , "May", "Jun" ,"Jul" ,"Aug","Sept","Oct","Nov","Dec"];
-      frDate += day+" ";
-      frDate += months[parseInt(month)-1]+", ";
-      frDate += year; 
-      return frDate; 
-    }
-    else{
-      return date;
-    }  
+    // if(date.indexOf(' ')==-1){
+    //   let year = date.substr(0,4);
+    //   let month = date.substr(5,2);
+    //   let day = date.substr(8,2);
+    //   let frDate = '';
+    //   let months = ["Jan" , "Feb" ,"Mar" , "Apr" , "May", "Jun" ,"Jul" ,"Aug","Sept","Oct","Nov","Dec"];
+    //   frDate += day+" ";
+    //   frDate += months[parseInt(month)-1]+", ";
+    //   frDate += year; 
+    //   return frDate; 
+    // }
+    // else{
+    //   return date;
+    // }  
+    return date;
   } 
 
   formatUpdateDate(date){
     // let new_date = date.split("-"),
     //   frDate = new_date[1] + "/" +new_date[2] + "/" +new_date[0]
     // return frDate;
-    if(date.indexOf(',')==-1){
-      let year = date.substr(0,4);
-      let month = date.substr(5,2);
-      let day = date.substr(8,2);
-      let months = ["January" , "February" ,"March" , "April" , "May", "June" ,"July" ,"August","September","October","November","December"];
-      let frDate = '';
-      frDate += months[parseInt(month)-1]+" ";
-      frDate += day + ", ";
-      frDate += year;
-      return frDate; 
-    }
-    else{
-      return date;
-    } 
+    // if(date.indexOf(',')==-1){
+    //   let year = date.substr(0,4);
+    //   let month = date.substr(5,2);
+    //   let day = date.substr(8,2);
+    //   let months = ["January" , "February" ,"March" , "April" , "May", "June" ,"July" ,"August","September","October","November","December"];
+    //   let frDate = '';
+    //   frDate += months[parseInt(month)-1]+" ";
+    //   frDate += day + ", ";
+    //   frDate += year;
+    //   return frDate; 
+    // }
+    // else{
+    //   return date;
+    // } 
+    return date;
   }
 
 
   onChangeHandler({formData}) {
     this.setState((prevState,prop)=>{
       let dataJSON = prevState.dataJSON;
-      formData.date = this.formatPublishDate(formData.when_and_where.date);
-      formData.sources.lastUpdated = this.formatUpdateDate(formData.sources.last_updated);
+      formData.date = this.formatPublishDate(formData.date);
+      formData.lastUpdated = this.formatUpdateDate(formData.last_updated);
       dataJSON.data = formData;
       return{
         dataJSON : dataJSON
@@ -114,7 +116,6 @@ export default class editToCard extends React.Component {
   }
 
   onSubmitHandler({formData}) {
-
     if (typeof this.props.onPublishCallback === "function") {
       let dataJSON = this.state.dataJSON;
       dataJSON.data.section = dataJSON.data.title;
@@ -130,7 +131,7 @@ export default class editToCard extends React.Component {
   renderSEO() {
     let d = this.state.dataJSON.data;
     console.log(d, "dd")
-    let seo_blockquote = '<blockquote>' + d.when_and_where.district + d.when_and_where.state + d.description_of_incident+'</blockquote>'
+    let seo_blockquote = '<blockquote>' + d.district + d.state + d.description_of_incident+'</blockquote>'
     return seo_blockquote;
   }
 
@@ -185,7 +186,6 @@ export default class editToCard extends React.Component {
       } else {
         newMode = prevState.mode
       }
-
       return {
         mode: newMode
       }
