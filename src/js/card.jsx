@@ -179,7 +179,6 @@ export default class toCard extends React.Component {
         <div
           id="protograph_div"
           className="protograph-col7-mode">
-          {/* content */}
           <div className="news-card">
             <button className="card-date" disabled="true">{date}</button>
             <div className="card-title">{district}, {state}</div>
