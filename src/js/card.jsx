@@ -17,7 +17,6 @@ export default class toCard extends React.Component {
     if (this.props.dataJSON) {
       stateVar.fetchingData = false;
       stateVar.dataJSON = this.props.dataJSON;
-      stateVar.languageTexts = this.getLanguageTexts(this.props.dataJSON.data.language);
     }
 
     if (this.props.optionalConfigJSON) {
@@ -28,7 +27,7 @@ export default class toCard extends React.Component {
   }
 
   exportData() {
-    return document.getElementById('protograph_div').getBoundingClientRect();
+    return this.props.selector.getBoundingClientRect();
   }
 
   componentDidMount() {
@@ -37,21 +36,13 @@ export default class toCard extends React.Component {
         axios.get(this.props.dataURL)
       ];
 
-      if (this.props.siteConfigURL) {
-        items_to_fetch.push(axios.get(this.props.siteConfigURL));
-      }
-
-      axios.all(items_to_fetch).then(axios.spread((card, site_configs) => {
+      axios.all(items_to_fetch).then(axios.spread((card) => {
         let stateVar = {
           fetchingData: false,
           dataJSON: card.data,
           optionalConfigJSON:{},
-          siteConfigs: site_configs ? site_configs.data : this.state.siteConfigs,
           activeCounter:1
         };
-
-        stateVar.dataJSON.data.language = stateVar.siteConfigs.primary_language.toLowerCase();
-        stateVar.languageTexts = this.getLanguageTexts(stateVar.dataJSON.data.language);
         this.setState(stateVar);
       }));
     } 
@@ -64,26 +55,6 @@ export default class toCard extends React.Component {
         dataJSON: nextProps.dataJSON
       });
     }
-  }
-
-  getLanguageTexts(languageConfig) {
-    let language = languageConfig ? languageConfig : "hindi",
-      text_obj;
-
-    switch(language.toLowerCase()) {
-      case "hindi":
-        text_obj = {
-          font: "'Sarala', sans-serif"
-        }
-        break;
-      default:
-        text_obj = {
-          font: undefined
-        }
-        break;
-    }
-
-    return text_obj;
   }
 
 
@@ -207,8 +178,7 @@ export default class toCard extends React.Component {
       return (
         <div
           id="protograph_div"
-          className="protograph-col7-mode"
-          style={{ fontFamily: this.state.languageTexts.font }}>
+          className="protograph-col7-mode">
           {/* content */}
           <div className="news-card">
             <button className="card-date" disabled="true">{date}</button>
@@ -239,8 +209,7 @@ export default class toCard extends React.Component {
       return (
         <div
           id="protograph_div"
-          className="protograph-col4-mode"
-          style={{ fontFamily: this.state.languageTexts.font }}>
+          className="protograph-col4-mode">
           {/* content */}
           <div className="news-card news-card-mobile">
             <button className="card-date" disabled="true">{date}</button>

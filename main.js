@@ -26,28 +26,20 @@ ProtoGraph.Card.toIndiaSpendCard.prototype.renderCol4 = function(data) {
     this.mode = 'col4';
     this.render();
 }
-ProtoGraph.Card.toIndiaSpendCard.prototype.renderCol3 = function(data) {
-    this.mode = 'col3';
-    this.render();
-}
-
 ProtoGraph.Card.toIndiaSpendCard.prototype.renderScreenshot = function(data) {
     this.mode = 'screenshot';
     this.render();
 }
 
 ProtoGraph.Card.toIndiaSpendCard.prototype.render = function() {
-    ReactDOM.render( <
-        Card dataURL = { this.options.data_url }
-        schemaURL = { this.options.schema_url }
-        siteConfigs = { this.options.site_configs }
-        siteConfigURL = { this.options.site_config_url }
-        mode = { this.mode }
-        ref = {
-            (e) => {
-                this.containerInstance = this.containerInstance || e;
-            }
-        }
-        />,
-        this.options.selector);
+   ReactDOM.render(
+    <Card
+      dataURL={this.options.data_url}
+      selector={this.options.selector}
+      clickCallback={this.options.onClickCallback}
+      mode={this.mode}
+      ref={(e) => {
+        this.containerInstance = this.containerInstance || e;
+      }} />,
+    this.options.selector);
 }
