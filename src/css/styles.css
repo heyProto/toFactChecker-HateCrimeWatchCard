@@ -28,8 +28,8 @@ body {
 }
 
 .news-card {
-  width: 540px;
-  display: inline-block;
+  /*width: 540px;*/
+  /*display: inline-block;*/
   position: relative;
   box-sizing: border-box;
   padding: 16px;
@@ -37,6 +37,7 @@ body {
   height: 580px;
   border-radius: 4px;
   border: 1px solid #efefef;
+  overflow: hidden;
 }
 
 .news-card .card-title {
@@ -96,7 +97,7 @@ body {
 }
 
 .news-card .card-footer {
-    height: 45px;
+    /*height: 45px;*/
     border-top: 1px solid #efefef;
     position: absolute;
     bottom: 0px;
