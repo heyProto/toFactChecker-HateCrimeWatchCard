@@ -143,14 +143,15 @@ body {
 }
 
 .card-date{
-  color: white;
-  background: #cd1713;
+  color: #cd1713;
+  background: white;
   border-radius: 4px;
   border-color: #cd1713;
   border-width: 1px;
   margin-bottom: 10px;
   padding: 5px;
   text-align: center;
+  border: 1px solid #cd1713;
 }
 
 .logo-img {
