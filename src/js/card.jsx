@@ -1,6 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import axios from 'axios';
+import { render } from 'react-dom';
+import { all as axiosAll, get as axiosGet, spread as axiosSpread } from 'axios';
 export default class toCard extends React.Component {
 
   constructor(props) {
@@ -8,7 +8,6 @@ export default class toCard extends React.Component {
     let stateVar = {
       fetchingData: true,
       dataJSON: {},
-      optionalConfigJSON: {},
       languageTexts: undefined,
       siteConfigs: this.props.siteConfigs,
       activeCounter : 1
@@ -19,9 +18,6 @@ export default class toCard extends React.Component {
       stateVar.dataJSON = this.props.dataJSON;
     }
 
-    if (this.props.optionalConfigJSON) {
-      stateVar.optionalConfigJSON = this.props.optionalConfigJSON;
-    }
 
     this.state = stateVar;
   }
@@ -33,14 +29,13 @@ export default class toCard extends React.Component {
   componentDidMount() {
     if (this.state.fetchingData) {
       let items_to_fetch = [
-        axios.get(this.props.dataURL)
+        axiosGet(this.props.dataURL)
       ];
 
-      axios.all(items_to_fetch).then(axios.spread((card) => {
+      axiosAll(items_to_fetch).then(axiosSpread((card) => {
         let stateVar = {
           fetchingData: false,
           dataJSON: card.data,
-          optionalConfigJSON:{},
           activeCounter:1
         };
         this.setState(stateVar);
