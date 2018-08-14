@@ -8,7 +8,6 @@ export default class toCard extends React.Component {
     let stateVar = {
       fetchingData: true,
       dataJSON: {},
-      optionalConfigJSON: {},
       languageTexts: undefined,
       siteConfigs: this.props.siteConfigs,
       activeCounter : 1
@@ -17,10 +16,6 @@ export default class toCard extends React.Component {
     if (this.props.dataJSON) {
       stateVar.fetchingData = false;
       stateVar.dataJSON = this.props.dataJSON;
-    }
-
-    if (this.props.optionalConfigJSON) {
-      stateVar.optionalConfigJSON = this.props.optionalConfigJSON;
     }
 
     this.state = stateVar;
@@ -40,13 +35,12 @@ export default class toCard extends React.Component {
         let stateVar = {
           fetchingData: false,
           dataJSON: card.data,
-          optionalConfigJSON:{},
           activeCounter:1
         };
         this.setState(stateVar);
       }));
-    } 
-    
+    }
+
   }
 
   componentWillReceiveProps(nextProps) {
@@ -101,23 +95,30 @@ export default class toCard extends React.Component {
           if (d !== 'N/A'){
             if (victim_religion.indexOf(d) === -1){
               victim_religion.push(d);
-            } 
-          } 
+            }
+          }
         })
         perp_arr.forEach((d, i) =>{
           if (d !== 'N/A'){
             if (perp_religion.indexOf(d) === -1){
               perp_religion.push(d);
-            } 
-          } 
+            }
+          }
         })
-        console.log(victim_religion, perp_religion)
         return(
           <div>
             <div className="half-width-parameter">
               <div className="single-parameter">
                 <div className="parameter-label">context</div>
                 <p>{detail.pretext_to_incident}</p>
+              </div>
+              <div className="single-parameter">
+                <div className="parameter-label">No. of Victims Killed</div>
+                <p>{detail.no_of_victims_killed}</p>
+              </div>
+              <div className="single-parameter">
+                <div className="parameter-label">No. of Victims Injured</div>
+                <p>{detail.no_of_victims_injured}</p>
               </div>
               <div className="single-parameter">
                 <div className="parameter-label">religion of the victim(s)</div>
@@ -162,7 +163,7 @@ export default class toCard extends React.Component {
             </div>
           </div>
         );
-        break;    
+        break;
     }
   }
 
@@ -183,15 +184,15 @@ export default class toCard extends React.Component {
             <button className="card-date" disabled="true">{date}</button>
             <div className="card-title">{district}, {state}</div>
             <div className="card-tabs">
-              {this.renderTabs()}  
+              {this.renderTabs()}
             </div>
-            <div>
+            <div className='tab-content'>
               {this.renderTabContent(this.state.activeCounter)}
             </div>
             <div className="card-footer">
               <img className="logo-img" src={'https://cdn.protograph.pykih.com/79c10f895565f79dca4b/is_logo.jpeg'}/>
             </div>
-            </div> 
+            </div>
         </div>
       )
     }
@@ -214,9 +215,9 @@ export default class toCard extends React.Component {
             <button className="card-date" disabled="true">{date}</button>
             <div className="card-title">{district}, {state}</div>
             <div className="card-tabs card-tabs-mobile">
-              {this.renderTabs()}  
+              {this.renderTabs()}
             </div>
-            <div>
+            <div className='tab-content'>
               {this.renderTabContent(this.state.activeCounter)}
             </div>
             <div className="card-footer card-footer-mobile">

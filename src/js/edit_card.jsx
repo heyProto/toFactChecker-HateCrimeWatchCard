@@ -29,7 +29,6 @@ export default class editToCard extends React.Component {
       optionalConfigJSON: this.state.optionalConfigJSON,
       optionalConfigSchemaJSON: this.state.optionalConfigSchemaJSON
     }
-    console.log(getDataObj.dataJSON)
     getDataObj["name"] = getDataObj.dataJSON.data.district.substr(0,225); // Reduces the name to ensure the slug does not get too long
     return getDataObj;
   }
@@ -53,7 +52,7 @@ export default class editToCard extends React.Component {
           optionalConfigSchemaJSON: opt_config_schema.data,
           uiSchemaJSON: uiSchema.data
         };
-
+        if(typeof schema.data === 'string') {stateVars.schemaJSON = JSON.parse(schema.data);};
         this.setState(stateVars);
       }));
     }
@@ -72,14 +71,14 @@ export default class editToCard extends React.Component {
     //   let months = ["Jan" , "Feb" ,"Mar" , "Apr" , "May", "Jun" ,"Jul" ,"Aug","Sept","Oct","Nov","Dec"];
     //   frDate += day+" ";
     //   frDate += months[parseInt(month)-1]+", ";
-    //   frDate += year; 
-    //   return frDate; 
+    //   frDate += year;
+    //   return frDate;
     // }
     // else{
     //   return date;
-    // }  
+    // }
     return date;
-  } 
+  }
 
   formatUpdateDate(date){
     // let new_date = date.split("-"),
@@ -94,11 +93,11 @@ export default class editToCard extends React.Component {
     //   frDate += months[parseInt(month)-1]+" ";
     //   frDate += day + ", ";
     //   frDate += year;
-    //   return frDate; 
+    //   return frDate;
     // }
     // else{
     //   return date;
-    // } 
+    // }
     return date;
   }
 
@@ -112,7 +111,7 @@ export default class editToCard extends React.Component {
       return{
         dataJSON : dataJSON
       }
-    })  
+    })
   }
 
   onSubmitHandler({formData}) {
@@ -130,20 +129,19 @@ export default class editToCard extends React.Component {
 
   renderSEO() {
     let d = this.state.dataJSON.data;
-    console.log(d, "dd")
     let seo_blockquote = '<blockquote>' + d.district + d.state + d.description_of_incident+'</blockquote>'
     return seo_blockquote;
   }
 
   renderSchemaJSON() {
-    return this.state.schemaJSON.properties.data; 
-    
+    return this.state.schemaJSON.properties.data;
+
   }
 
   renderFormData() {
     let data = this.state.dataJSON.data;
     return data;
-    
+
   }
 
   showLinkText() {
