@@ -136,7 +136,7 @@ export default class toCard extends React.Component {
               </div>
               <div className="single-parameter">
                 <div className="parameter-label">nature of assault</div>
-                <p>{detail.type_of_assault}</p>
+                <p>{detail.type_of_assault.join(",")}</p>
               </div>
               <div className="single-parameter">
                 <div className="parameter-label">party in power in the state</div>

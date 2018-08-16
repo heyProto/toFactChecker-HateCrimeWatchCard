@@ -17,7 +17,7 @@
         "religion_of_victim_2": "N/A",
         "religion_of_victim_3": "N/A",
         "religion_of_other_victim": "N/A",
-        "type_of_assault": "Vandalism",
+        "type_of_assault": ["Vandalism"],
         "no_of_victims_killed": "N/A",
         "no_of_victims_injured": "N/A",
         "pretext_to_incident": "Communal hatred",

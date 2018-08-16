@@ -71,7 +71,11 @@
                 {
                     "id": "/properties/data/properties/details/properties/type_of_assault",
                     "title": "Nature of Assault",
-                    "type": "string"
+                    "type": "array",
+                    "items": {
+                        "type":"string",
+                        "enum": ["Vandalism", "Fatal", "Non-fatal injuries", "Non-Fatal", "Sexual assault", "Intimidation", "Abduction", "Threat", "Abetment to suicide"]
+                    }
                 },
                 "is_fir_registered":
                 {
