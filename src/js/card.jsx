@@ -1,5 +1,7 @@
 import React from "react";
 import axios from "axios";
+import moment from "moment";
+
 export default class toCard extends React.Component {
   constructor(props) {
     super(props);
@@ -86,6 +88,22 @@ export default class toCard extends React.Component {
     }
   }
 
+  formatDate(date, language) {
+    if (date) {
+      switch (language) {
+        case "Hindi":
+          moment.locale("hi");
+          break;
+        case "English":
+        default:
+          moment.locale("en");
+      }
+
+      let localDate = moment(date);
+      return localDate.format("LL");
+    } else return "-";
+  }
+
   selectTab(tab) {
     this.setState({ activeCounter: tab + 1 });
   }
@@ -129,7 +147,6 @@ export default class toCard extends React.Component {
       case 1:
         let description = this.state.dataJSON.data.description_of_incident;
         return <p>{description}</p>;
-        break;
       case 2:
         let detail = this.state.dataJSON.data,
           victim_arr = [
@@ -214,21 +231,20 @@ export default class toCard extends React.Component {
             </div>
           </div>
         );
-        break;
       case 3:
-        let sources = this.state.dataJSON.data;
+        let data = this.state.dataJSON.data;
         return (
           <div>
             <div className="single-parameter">
               <div className="parameter-label">{this.state.tags.source}</div>
               <p>
-                <a href={sources.link_1} target="_blank">
-                  {sources.link_1}
+                <a href={data.link_1} target="_blank">
+                  {data.link_1}
                 </a>
               </p>
               <p>
-                <a href={sources.link_2} target="_blank">
-                  {sources.link_2}
+                <a href={data.link_2} target="_blank">
+                  {data.link_2}
                 </a>
               </p>
             </div>
@@ -236,7 +252,7 @@ export default class toCard extends React.Component {
               <div className="parameter-label">
                 {this.state.tags.last_updated}
               </div>
-              <p>{sources.last_updated}</p>
+              <p>{this.formatDate(data.last_updated, data.language)}</p>
             </div>
           </div>
         );
@@ -250,14 +266,13 @@ export default class toCard extends React.Component {
     } else {
       let data = this.state.dataJSON.data,
         district = data.district,
-        state = data.state,
-        date = data.date;
+        state = data.state;
 
       return (
         <div id="protograph_div" className="protograph-col7-mode">
           <div className="news-card">
             <button className="card-date" disabled="true">
-              {date}
+              {this.formatDate(data.date, data.language)}
             </button>
             <div className="card-title">
               {district}, {state}
