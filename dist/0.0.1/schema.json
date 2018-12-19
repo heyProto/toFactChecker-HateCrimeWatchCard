@@ -65,18 +65,7 @@
           "title": "Nature of Assault",
           "type": "array",
           "items": {
-            "type": "string",
-            "enum": [
-              "Vandalism",
-              "Fatal",
-              "Non-fatal injuries",
-              "Non-Fatal",
-              "Sexual assault",
-              "Intimidation",
-              "Abduction",
-              "Threat",
-              "Abetment to suicide"
-            ]
+            "type": "string"
           }
         },
         "is_fir_registered": {
@@ -162,8 +151,7 @@
         "is_cross_fir_registered": {
           "id": "/properties/data/properties/sources/properties/is_cross_fir_registered",
           "title": "Is Cross FIR registered?",
-          "type": "string",
-          "enum": ["Yes", "No", "Not Known"]
+          "type": "string"
         },
         "cross_fir_details": {
           "id": "/properties/data/properties/sources/properties/cross_fir_details",
