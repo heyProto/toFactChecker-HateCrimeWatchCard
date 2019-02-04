@@ -157,6 +157,22 @@
           "id": "/properties/data/properties/sources/properties/cross_fir_details",
           "title": "Cross FIR details",
           "type": "string"
+        },
+        "images": {
+          "id": "/properties/data/properties/sources/properties/images",
+          "title": "Images",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "videos": {
+          "id": "/properties/data/properties/sources/properties/videos",
+          "title": "Videos",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       },
       "required": [

@@ -59,7 +59,7 @@ body {
   font-size: 12px;
   color: #9a9a9a;
   text-transform: uppercase;
-  width: 110px;
+  width: 108px;
   border-bottom: 2px solid white;
   display: inline-block;
   text-align: center;
@@ -180,6 +180,5 @@ body {
 .news-card-mobile .card-footer-mobile {
   width: 300px;
 }
-
 
 /* Note the above height and width are just samples. Change it as per the usecase. */

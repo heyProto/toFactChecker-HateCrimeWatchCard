@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import moment from "moment";
+import Slider from './Slider.js';
 
 export default class toCard extends React.Component {
   constructor(props) {
@@ -8,7 +9,7 @@ export default class toCard extends React.Component {
 
     this.tagMap = {
       English: {
-        tabs: ["Overview", "Details", "Sources"],
+        tabs: ["Overview", "Details", "Sources", "Images", "Videos"],
         context: "Context",
         victims_killed: "No. of victims killed",
         victims_injured: "No. of victims injured",
@@ -19,9 +20,11 @@ export default class toCard extends React.Component {
         party_in_power: "Party in power in the state",
         source: "Source",
         last_updated: "Last updated",
+        no_images: "No images available",
+        no_videos: "No videos available"
       },
       Hindi: {
-        tabs: ["अवलोकन", "विवरण", "संदर्भ"],
+        tabs: ["अवलोकन", "विवरण", "संदर्भ", "तस्वीरें", "वीडियो"],
         context: "प्रसंग",
         victims_killed: "मारे गए पीड़ितों की संख्या",
         victims_injured: "घायल पीड़ितों की संख्या",
@@ -32,6 +35,8 @@ export default class toCard extends React.Component {
         party_in_power: "राज्य में सत्ताधारी पार्टी",
         source: "संदर्भ",
         last_updated: "आखरी अपडेट",
+        no_images: "कोई चित्र उपलब्ध नहीं है",
+        no_videos: "कोई वीडियो उपलब्ध नहीं है"
       },
     };
 
@@ -41,6 +46,7 @@ export default class toCard extends React.Component {
       languageTexts: undefined,
       siteConfigs: this.props.siteConfigs,
       activeCounter: 1,
+      translateValue: 50
     };
 
     if (this.props.dataJSON) {
@@ -256,6 +262,47 @@ export default class toCard extends React.Component {
             </div>
           </div>
         );
+      case 4:
+          if (this.state.dataJSON.data.videos && this.state.dataJSON.data.images) {
+            return (
+              <div className="sliders">
+                <Slider width={540} urls={this.state.dataJSON.data.images} type="image" />
+                <Slider width={540} urls={this.state.dataJSON.data.videos} type="video" hidden={true} />
+              </div>          
+            );
+          }
+          else if (this.state.dataJSON.data.images) {
+            return (
+              <Slider width={540} urls={this.state.dataJSON.data.images} type="image" />
+            )
+          }
+          else {
+            let message = this.state.tags.no_images;
+            return (
+              message
+            );
+          }
+          
+      case 5:
+        if (this.state.dataJSON.data.videos && this.state.dataJSON.data.images) {
+          return (
+            <div className="sliders">
+              <Slider width={540} urls={this.state.dataJSON.data.images} type="image" hidden={true} />
+              <Slider width={540} urls={this.state.dataJSON.data.videos} type="video"/>
+            </div>          
+          );
+        }
+        else if (this.state.dataJSON.data.videos) {
+          return (
+            <Slider width={540} urls={this.state.dataJSON.data.videos} type="video" />
+          )
+        }
+        else {
+          let message = this.state.tags.no_videos;
+          return (
+            message
+          );
+        } 
         break;
     }
   }
@@ -344,5 +391,13 @@ export default class toCard extends React.Component {
     }
   }
 }
+
+const Arrow = ({ direction, clickFunction, glyph }) => (
+  <div
+    className={ `slide-arrow ${direction}` }
+    onClick={ clickFunction }>
+    { glyph }
+  </div>
+);
 
 // <a href={data.explore_url}><div className="call-to-action-button call-to-action-mobile">Click here to explore data</div></a>
